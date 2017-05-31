@@ -5,9 +5,9 @@
 <table class="table is-bordered is-striped is-narrow">
   <thead class="thead">
     <tr class="tr">
+      <th width="250"></th>
       <th>Name</th>
       <th>Description</th>
-      <th>Picture</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,9 +15,11 @@
   <tbody class="tbody">
     <% @ideas.each do |idea| %>
       <tr class="tr">
+        <td>
+          <%= image_tag(idea.picture_url) if idea.picture.present? %>
+        </td>
         <td><%= idea.name %></td>
         <td><%= idea.description %></td>
-        <td><%= idea.picture %></td>
         <td>
           <ul>
             <li><%= link_to 'Show', idea %></li>
