@@ -3,12 +3,48 @@
 <head>
   <title>Railsgirls</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <section class="hero is-fullheight">
+    <!-- Hero header: will stick at the top -->
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a class="nav-item">
+              RailsGirls
+            </a>
+          </div>
+          
+          <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          
+          <div class="nav-right nav-menu">
+            <a class="nav-item is-tab is-active" href="/ideas">
+              Ideas
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+    <div class="hero-body">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+    
+    <div class="hero-foot">
+      <p class="has-text-centered">
+        Made with <strong><3</strong> by @joaomarcuslf
+      </p>
+    </div>
+  </section>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
