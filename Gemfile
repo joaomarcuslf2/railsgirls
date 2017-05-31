@@ -5,6 +5,7 @@ gem 'sqlite3'
 
 # Style
 gem 'sass-rails', '~> 5.0'
+gem 'bulma-rails', '~> 0.4.0'
 
 # JavaScript
 gem 'uglifier', '>= 1.3.0'
