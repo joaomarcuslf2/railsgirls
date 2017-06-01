@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
-</p>
+<section class="idea">
+  <div class="columns">
 
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
-</p>
-
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+        <div class="column is-narrow">
+          <div class="card-image">
+            <figure class="image is-128x128">
+              <%= image_tag(@idea.picture_url) if @idea.picture.present? %>
+            </figure>
+          </div>
+        </div>
+        
+        <div class="column">
+          <h3 class="idea-title"><%= @idea.name %></h3>
+          
+          <p class="idea-content">
+            <%= @idea.description %>
+          </p>
+          
+          <hr />
+          
+          <div class="actions">
+            <%= link_with_content fa_icon(:pencil), edit_idea_path(@idea), class: "button is-primary" %>
+            <%= link_with_content fa_icon(:remove), @idea, class: "button is-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_with_content fa_icon(:undo), ideas_path, class: "button is-warning" %>
+          </div>
+          <br>
+          <small><%= @idea.updated_at.strftime("%d %b %y - %H:%M") %></small>    
+    </div>
+  </div>
+</section>

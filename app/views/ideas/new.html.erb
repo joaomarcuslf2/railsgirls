@@ -1,5 +1,8 @@
-<h1>New Idea</h1>
+<div class="has-text-centered">  
+  <%= link_with_content fa_icon(:undo, text: "Back to Home"), ideas_path, class: "button is-warning is-fullwidth" %>
+</div>
+
+<br />
 
 <%= render 'form' %>
 
-<%= link_to 'Back', ideas_path %>

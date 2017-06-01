@@ -40,6 +40,12 @@
     text-indent: 1rem;
   }
   
+  &-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .actions {
     .button {
       border-radius: 100%;
