@@ -1,35 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+<%=  link_with_content fa_icon(:plus, text: "Have a new idea?"), new_idea_path, class: "button is-success is-medium is-pulled-right" %>
 <h1 class="title is-1">Listing Ideas</h1>
 
-<table class="table is-bordered is-striped is-narrow">
-  <thead class="thead">
-    <tr class="tr">
-      <th width="250"></th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
 
-  <tbody class="tbody">
-    <% @ideas.each do |idea| %>
-      <tr class="tr">
-        <td>
-          <%= image_tag(idea.picture_url) if idea.picture.present? %>
-        </td>
-        <td><%= idea.name %></td>
-        <td><%= idea.description %></td>
-        <td>
-          <ul>
-            <li><%= link_to 'Show', idea %></li>
-            <li><%= link_to 'Edit', edit_idea_path(idea) %></li>
-            <li><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-          </ul>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @ideas.each do |idea| %>
+<section class="idea">
+  <div class="columns">
 
-<%= link_to 'New Idea', new_idea_path %>
+        <div class="column is-narrow">
+          <div class="card-image">
+            <figure class="image is-128x128">
+              <%= image_tag(idea.picture_url) if idea.picture.present? %>
+            </figure>
+          </div>
+        </div>
+        
+        <div class="column">
+          <h3 class="idea-title"><%= idea.name %></h3>
+          
+          <p class="idea-content">
+            <%= idea.description %>
+          </p>
+          
+          <hr />
+          
+          <div class="actions">
+            <%= link_with_content fa_icon(:pencil), edit_idea_path(idea), class: "button is-primary" %>
+            <%= link_with_content fa_icon(:remove), idea, class: "button is-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          <br>
+          <small><%= idea.updated_at.strftime("%d %b %y - %H:%M") %></small>    
+    </div>
+  </div>
+</section>
+<% end %>

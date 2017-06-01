@@ -14,3 +14,35 @@
  *= require_self
  */
 @import "bulma";
+@import "font-awesome";
+
+.hero.is-medium .hero-body {
+    padding-top: 2rem;
+}
+
+.idea {
+  @extend .section;
+  
+  background: rgba(255, 255, 255, .1);
+  border: .1rem solid rgba(255, 255, 255, .12);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+
+  &-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  &-content {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    text-indent: 1rem;
+  }
+  
+  .actions {
+    .button {
+      border-radius: 100%;
+    }
+  }
+}
