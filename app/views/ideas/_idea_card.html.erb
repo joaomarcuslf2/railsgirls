@@ -20,6 +20,12 @@
       <div class="actions">
         <%= link_with_content fa_icon(:pencil), edit_idea_path(idea), class: "button is-warning" %>
         <%= link_with_content fa_icon(:remove), idea, class: "button is-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        
+        <div class="is-pulled-right">
+          <%= link_with_content fa_icon("thumbs-up"), "/ideas/#{idea.id}/sum", class: "button is-primary" %>
+          <%= idea.rate %>
+          <%= link_with_content fa_icon("thumbs-down"), "/ideas/#{idea.id}/decrease", class: "button is-danger" %>
+        </div>
       </div>
       <br>
       <small><%= idea.updated_at.strftime("%d %b %y - %H:%M") %></small>    

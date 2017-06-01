@@ -1,10 +1,10 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :sum, :decrease]
 
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all.order('updated_at DESC')
+    @ideas = Idea.all.order('rate DESC')
   end
 
   # GET /ideas/1
@@ -43,6 +43,38 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.update(idea_params)
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        format.json { render :show, status: :ok, location: @idea }
+      else
+        format.html { render :edit }
+        format.json { render json: @idea.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # GET /ideas/1/sum
+  # GET /ideas/1/sum.json
+  def sum
+    respond_to do |format|
+      rate = @idea.rate + 1
+      
+      if @idea.update({ rate: rate })
+        format.html { redirect_to ideas_path, notice: 'Idea was successfully updated.' }
+        format.json { render :show, status: :ok, location: @idea }
+      else
+        format.html { render :edit }
+        format.json { render json: @idea.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # GET /ideas/1/decrease
+  # GET /ideas/1/decrease.json
+  def decrease
+    respond_to do |format|
+      rate = @idea.rate - 1
+      
+      if @idea.update({ rate: rate })
+        format.html { redirect_to ideas_path, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
       else
         format.html { render :edit }
