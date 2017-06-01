@@ -4,17 +4,25 @@
   <title>Railsgirls</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <section class="hero is-fullheight">
-    <!-- Hero header: will stick at the top -->
-    <div class="hero-head">
-      <header class="nav">
+  <div class="hero is-fullheight is-info is-bold">
+    <header class="hero-head">
+      <nav class="nav has-shadow">
         <div class="container">
           <div class="nav-left">
-            <a class="nav-item">
+            <a class="nav-item title is-2">
               RailsGirls
             </a>
+          </div>
+          
+          <div class="nav-center is-hidden-mobile">
+            <p class="nav-item subtitle has-text-centered">
+              Made with <3 by @joaomarcuslf
+            </p>  
           </div>
           
           <span class="nav-toggle">
@@ -24,26 +32,23 @@
           </span>
           
           <div class="nav-right nav-menu">
-            <a class="nav-item is-tab is-active" href="/ideas">
+            <a class="nav-item is-tab" href="/ideas">
               Ideas
+            </a>
+            <a class="nav-item is-tab" href="/info">
+              Info
             </a>
           </div>
         </div>
-      </header>
-    </div>
+      </nav>
+    </header>
     
-    <div class="hero-body">
-      <div class="container">
+    <section class="hero-body">
+      <div class="container is-fluid">
         <%= yield %>
       </div>
-    </div>
-    
-    <div class="hero-foot">
-      <p class="has-text-centered">
-        Made with <strong><3</strong> by @joaomarcuslf
-      </p>
-    </div>
-  </section>
+    </section>
+  </div>
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
