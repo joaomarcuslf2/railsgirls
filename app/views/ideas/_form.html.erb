@@ -1,29 +1,48 @@
-<%= form_for(@idea) do |f| %>
+<div class="form idea-form">
+  <%= form_for(@idea) do |f| %>
   <% if @idea.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
-
-      <ul>
+  <div id="error_explanation">
+    <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+    
+    <ul>
       <% @idea.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, class: "title" %>
+    
+    <div class="control">
+      <%= f.text_field :name, class: "input" %>
+    </div>
   </div>
+  
+  <br />
+  
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description, class: "title" %>
+    <div class="control">
+      <%= f.text_area :description, class: "textarea is-fullwidth"  %>
+    </div>
   </div>
+  
+  <br />
+  
   <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture, id: :idea_picture %>
+    <%= f.label :picture, class: "title" %>
+    <div class="control">
+      <%= f.file_field :picture, id: :idea_picture %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <br />
+  
+  <div class="field">
+    <div class="control">
+      <%= submit_tag "Save this Idea", class: "button is-primary is-fullwidth" %>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
