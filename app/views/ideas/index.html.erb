@@ -1,9 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<%=  link_with_content fa_icon(:plus, text: "Have a new idea?"), new_idea_path, class: "button is-success is-medium is-pulled-right" %>
-<h1 class="title is-1">Listing Ideas</h1>
-
-
-<% @ideas.each do |idea| %>
-<%= render "idea_card", idea: idea %>
-<% end %>

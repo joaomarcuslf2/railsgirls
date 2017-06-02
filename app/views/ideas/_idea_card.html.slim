@@ -1,0 +1,22 @@
+section.idea
+  .columns
+    .column.is-narrow
+      .card-image
+        figure.image.is-128x128
+          = image_tag(idea.picture_url) if idea.picture.present?
+    .column
+      h3.idea-title
+        = idea.name
+      p.idea-content
+        = idea.description
+      hr
+      .actions
+        = link_with_content fa_icon(:pencil), edit_idea_path(idea), class: "button is-warning"
+        = link_with_content fa_icon(:remove), idea, class: "button is-danger", method: :delete, data: { confirm: 'Are you sure?' }
+        .is-pulled-right
+          = link_with_content fa_icon("thumbs-up"), "/ideas/#{idea.id}/sum", class: "button is-primary"
+          = idea.rate
+          = link_with_content fa_icon("thumbs-down"), "/ideas/#{idea.id}/decrease", class: "button is-danger"
+      br
+      small
+        = idea.updated_at.strftime("%d %b %y - %H:%M")
