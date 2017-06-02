@@ -1,0 +1,7 @@
+p#notice
+  = notice
+=  link_with_content fa_icon(:plus, text: "Have a new idea?"), new_idea_path, class: "button is-success is-medium is-pulled-right"
+h1.title.is-1
+  | Listing Ideas
+- @ideas.each do |idea|
+  = render "idea_card", idea: idea

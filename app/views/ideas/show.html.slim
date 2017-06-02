@@ -1,0 +1,5 @@
+p#notice
+  = notice
+.has-text-centered
+  = link_with_content fa_icon(:undo, text: "Back to Home"), ideas_path, class: "button is-warning"
+= render "idea_card", idea: @idea
