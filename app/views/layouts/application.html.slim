@@ -3,7 +3,7 @@ html
   head
     title
       | Railsgirls
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
@@ -15,20 +15,20 @@ html
           .container
             .nav-left
               a.nav-item.title.is-2[href="/"]
-                |  Ideas Board 
+                |  Ideas Board
             .nav-center.is-hidden-mobile
               p.nav-item.subtitle.has-text-centered
-                |  Made with <3 by @joaomarcuslf 
+                |  Made with <3 by @joaomarcuslf
             span.nav-toggle
               span
               span
               span
             .nav-right.nav-menu
               a.nav-item.is-tab[href="/ideas"]
-                |  Ideas 
+                |  Ideas
               a.nav-item.is-tab[href="/info"]
-                |  Info 
+                |  Info
       section.hero-body
         .container.is-fluid
           = yield
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
