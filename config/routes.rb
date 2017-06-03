@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/info' => "pages#info"
-  
+
   get '/ideas/:id/sum', to: 'ideas#sum'
   get '/ideas/:id/decrease', to: 'ideas#decrease'
 
