@@ -10,6 +10,8 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    @comments = @idea.comments.all
+    @comment = @idea.comments.build
   end
 
   # GET /ideas/new
@@ -50,13 +52,13 @@ class IdeasController < ApplicationController
       end
     end
   end
-  
+
   # GET /ideas/1/sum
   # GET /ideas/1/sum.json
   def sum
     respond_to do |format|
       rate = @idea.rate + 1
-      
+
       if @idea.update({ rate: rate })
         format.html { redirect_to ideas_path, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
@@ -66,13 +68,13 @@ class IdeasController < ApplicationController
       end
     end
   end
-  
+
   # GET /ideas/1/decrease
   # GET /ideas/1/decrease.json
   def decrease
     respond_to do |format|
       rate = @idea.rate - 1
-      
+
       if @idea.update({ rate: rate })
         format.html { redirect_to ideas_path, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
