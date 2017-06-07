@@ -1,16 +1,27 @@
-= form_for @comment do |f|
-  - if @comment.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
-      ul
-        - @comment.errors.full_messages.each do |message|
-          li = message
+.form.comment-form
+  = form_for @comment do |f|
+    - if @comment.errors.any?
+        .notification.is-danger
+          h2
+            = pluralize(@comment.errors.count, "error")
+            |  prohibited this comment from being saved:
+          ul
+            - @comment.errors.full_messages.each do |message|
+              li
+                | -
+                = message
 
-  .field
-    = f.label :user_name
-    = f.text_field :user_name
-  .field
-    = f.label :body
-    = f.text_area :body
-  = f.hidden_field :idea_id
-  .actions = f.submit
+    .field
+      = f.label :user_name, class: "title"
+      .control
+        = f.text_field :user_name, class: "input"
+    br
+
+    .field
+      = f.label :body, class: "title"
+      .control
+        = f.text_area :body, class: "textarea is-fullwidth"
+    br
+
+    = f.hidden_field :idea_id
+    .actions = f.submit
